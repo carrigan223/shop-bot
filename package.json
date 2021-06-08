@@ -1,0 +1,29 @@
+{
+  "name": "shop-bot",
+  "version": "1.0.0",
+  "description": "Shopping chatbot built with react,node,mongo, and dialogflow",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carrigan223/shop-bot.git"
+  },
+  "keywords": [
+    "chatbot",
+    "react",
+    "node",
+    "mongo",
+    "dialogflow"
+  ],
+  "author": "Andrew Carrigan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carrigan223/shop-bot/issues"
+  },
+  "homepage": "https://github.com/carrigan223/shop-bot#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
