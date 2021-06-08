@@ -6,7 +6,9 @@ const express = require('express')
 const app = express()
 
 //setting the port to be used
-const port = 5000
+//specified by .env otherwise default to
+//port 5000 for local
+const PORT = process.env.PORT || 5000
 
 
 //route handling
@@ -17,7 +19,7 @@ app.get('/',(req,res) => {
 
 
 //set the port for the app to listen
-app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`)
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`)
 })
  

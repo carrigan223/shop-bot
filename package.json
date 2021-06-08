@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "Shopping chatbot built with react,node,mongo, and dialogflow",
   "main": "index.js",
+  "engines": {
+    "node": "16.2.0",
+    "npm": "7.13.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+
   },
   "repository": {
     "type": "git",
