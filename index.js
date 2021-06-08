@@ -20,6 +20,6 @@ app.get('/',(req,res) => {
 
 //set the port for the app to listen
 app.listen(PORT, () => {
-    console.log(`Server is listening on port ${PORT}`)
+    console.log(`Server is now listening on port ${PORT}`)
 })
  
