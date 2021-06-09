@@ -1,3 +1,4 @@
 node_modules
 .idea
 google-service-account
+config/dev.js
