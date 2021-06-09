@@ -15,7 +15,7 @@ module.exports = {
   textQuery: async function (text, parameters = {}) {
     //bringing in the handleAction() method to be called before initialization
     //'self' is the module we are working in
-    let self = module.exports; 
+    let self = module.exports;
     const request = {
       session: sessionPath,
       queryInput: {
@@ -27,6 +27,25 @@ module.exports = {
       queryParams: {
         payload: {
           data: parameters,
+        },
+      },
+    };
+    let responses = await sessionClient.detectIntent(request);
+    responses = await self.handleAction(responses);
+    return responses;
+  },
+
+  eventQuery: async function (event, parameters = {}) {
+    //bringing in the handleAction() method to be called before initialization
+    //'self' is the module we are working in
+    let self = module.exports;
+    const request = {
+      session: sessionPath,
+      queryInput: {
+        event: {
+          name: event,
+          parameters: parameters,
+          languageCode: config.dialogFlowSessionLanguageCode,
         },
       },
     };
