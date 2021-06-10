@@ -4,19 +4,14 @@ const dialogflow = require("dialogflow");
 const { struct } = require("pb-util");
 const config = require("../config/keys");
 
-const projectID = config.googleProjectID;
+const projectId = config.googleProjectID;
 
 const credentials = {
   client_email: config.googleClientEmail,
   private_key: config.googlePrivateKey,
 };
 
-const sessionClient = new dialogflow.SessionsClient({ projectID, credentials });
-
-const sessionPath = sessionClient.sessionPath(
-  config.googleProjectID,
-  config.dialogFlowSessionID
-);
+const sessionClient = new dialogflow.SessionsClient({ projectId, credentials });
 
 //handling the dialogflow implementation
 module.exports = {
@@ -24,6 +19,11 @@ module.exports = {
     //bringing in the handleAction() method to be called before initialization
     //'self' is the module we are working in
     let self = module.exports;
+    const sessionPath = sessionClient.sessionPath(
+      config.googleProjectID,
+      config.dialogFlowSessionID
+    );
+
     const request = {
       session: sessionPath,
       queryInput: {
