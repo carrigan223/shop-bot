@@ -15,6 +15,7 @@ const sessionClient = new dialogflow.SessionsClient({ projectId, credentials });
 
 //handling the dialogflow implementation
 module.exports = {
+  
   textQuery: async function (text, parameters = {}) {
     //bringing in the handleAction() method to be called before initialization
     //'self' is the module we are working in
