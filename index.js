@@ -1,6 +1,6 @@
 //import required modules
 const express = require("express");
-const config = require("../config/keys");
+const config = require("./config/keys");
 
 
 //initialize the app
