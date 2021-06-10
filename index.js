@@ -17,6 +17,6 @@ const PORT = process.env.PORT || 5000;
 
 //set the port for the app to listen
 app.listen(PORT, () => {
+  console.log(config.googlePrivateKey);
   console.log(`Server is now listening on port ${PORT}`);
-  console.log(config.keys.googlePrivateKey)
 });
