@@ -3,5 +3,5 @@ module.exports = {
   dialogFlowSessionID: process.env.DIALOG_FLOW_SESSION_ID,
   dialogFlowSessionLanguageCode: process.env.DIALOG_FLOW_LANGUAGE_CODE,
   googleClientEmail: process.env.GOOGLE_CLIENT_EMAIL,
-  googlePrivateKey: process.env.GCP_KEY_FILE,
+  googlePrivateKey: process.env.GOOGLE_PRIVATE_KEY,
 };
