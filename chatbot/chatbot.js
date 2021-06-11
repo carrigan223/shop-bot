@@ -2,13 +2,15 @@
 
 const dialogflow = require("dialogflow");
 const { struct } = require("pb-util");
-const config = require("../config/keys");
+const nonGoogleConfig = require("../config/keys");
+const config = require("../config/google-credentials.json");
 
-const projectId = config.googleProjectID;
+
+const projectId = config.project_id;
 
 const credentials = {
-  client_email: config.googleClientEmail,
-  private_key: config.googlePrivateKey,
+  client_email: config.client_email,
+  private_key: config.private_key,
 };
 
 const sessionClient = new dialogflow.SessionsClient({ projectId, credentials });
@@ -21,17 +23,17 @@ module.exports = {
     //'self' is the module we are working in
     let self = module.exports;
     const sessionPath = sessionClient.sessionPath(
-      config.googleProjectID,
-      config.dialogFlowSessionID
+      nonGoogleConfig.googleProjectID,
+      nonGoogleConfig.dialogFlowSessionID
     );
 
     const request = {
-      
+
       session: sessionPath,
       queryInput: {
         text: {
           text: text,
-          languageCode: config.dialogFlowSessionLanguageCode,
+          languageCode: nonGoogleConfig.dialogFlowSessionLanguageCode,
         },
       },
       queryParams: {
@@ -55,7 +57,7 @@ module.exports = {
         event: {
           name: event,
           parameters: struct.encode(parameters),
-          languageCode: config.dialogFlowSessionLanguageCode,
+          languageCode: nonGoogleConfig.dialogFlowSessionLanguageCode,
         },
       },
     };

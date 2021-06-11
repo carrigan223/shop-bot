@@ -2,3 +2,4 @@ node_modules
 .idea
 google-service-account
 config/dev.js
+google-credentials.json
