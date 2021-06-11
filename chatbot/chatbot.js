@@ -3,7 +3,7 @@
 const dialogflow = require("dialogflow");
 const { struct } = require("pb-util");
 const nonGoogleConfig = require("../config/keys");
-const config = require("../config/google-credentials.json");
+const config = require("../google-credentials.json");
 
 
 const projectId = config.project_id;
