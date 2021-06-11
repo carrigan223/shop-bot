@@ -1,7 +1,5 @@
 //import required modules
 const express = require("express");
-// const config = require("./config/keys");
-const config = require("./google-credentials.json");
 
 //initialize the app
 const app = express();
@@ -18,6 +16,5 @@ const PORT = process.env.PORT || 5000;
 
 //set the port for the app to listen
 app.listen(PORT, () => {
-  console.log(config);
   console.log(`Server is now listening on port ${PORT}`);
 });
