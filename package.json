@@ -10,7 +10,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "frontend": "npm run start --prefix shop-bot-front-end",
+    "fullServer": "concurrently \"npm run dev\" \"npm run frontend\""
   },
   "repository": {
     "type": "git",
@@ -36,6 +38,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "concurrently": "^6.2.0",
     "nodemon": "^2.0.7"
   }
 }
