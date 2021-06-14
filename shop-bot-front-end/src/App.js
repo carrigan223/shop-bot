@@ -9,11 +9,14 @@ import styled from "styled-components";
 
 const Container = styled.div`
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex: 1;
   flex-direction: column;
+  /* overflow: auto; */
 `;
+
+const ContainerTwo = styled.div``;
 
 const App = () => (
   <BrowserRouter>
