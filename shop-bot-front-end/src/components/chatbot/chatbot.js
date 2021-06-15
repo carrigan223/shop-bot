@@ -9,31 +9,29 @@ import {
 } from "./ChatbotStyles";
 
 class Chatbot extends Component {
+  messagesEnd;
   constructor(props) {
     super(props);
 
+    this._handleOnKeyPress = this._handleOnKeyPress.bind(this);
     this.state = {
       //array of messages to be displayed
       messages: [],
     };
   }
 
-  async df_text_query(text) {
+  async df_text_query(queryText) {
     let says = {
-      speaks: "me",
+      speaks: "user",
       msg: {
         text: {
-          text: text,
+          text: queryText,
         },
       },
     };
-
-    //spreading the original messages to retain the history and adding
-    //the new message to the end of the array
     this.setState({ messages: [...this.state.messages, says] });
-    const res = await axios.post("/api/df_text_query", { text });
-
-    for (let msg of res.data.fullfillmentMessages) {
+    const res = await axios.post("/api/df_text_query", { text: queryText });
+    for (let msg of res.data.fulfillmentMessages) {
       says = {
         speaks: "bot",
         msg: msg,
@@ -41,6 +39,7 @@ class Chatbot extends Component {
       this.setState({ messages: [...this.state.messages, says] });
     }
   }
+
   async df_event_query(eventName) {
     const res = await axios.post("/api/df_event_query", { event: eventName });
     console.log("this is the res:", res);
@@ -53,8 +52,13 @@ class Chatbot extends Component {
     }
   }
 
+  //on initial render will send the welcome event to dialogflow
   componentDidMount() {
     this.df_event_query("welcome");
+  }
+
+  componentDidUpdate() {
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
   }
 
   renderMessages(returnedMessages) {
@@ -73,6 +77,13 @@ class Chatbot extends Component {
     }
   }
 
+  _handleOnKeyPress(e) {
+    if (e.key === "Enter") {
+      this.df_text_query(e.target.value);
+      e.target.value = "";
+    }
+  }
+
   render() {
     console.log(
       this.state.messages.length > 0
@@ -84,8 +95,18 @@ class Chatbot extends Component {
         <ChatbotHeader>Mr. Nice Guy</ChatbotHeader>
         <ChatbotInterface>
           {this.renderMessages(this.state.messages)}
+          <div
+            ref={(el) => {
+              this.messagesEnd = el;
+            }}
+            style={{ float: "left", cleat: "both" }}
+          />
         </ChatbotInterface>
-        <TextInput type="text" placeholder="Say something..." />
+        <TextInput
+          type="text"
+          placeholder="Say something..."
+          onKeyPress={this._handleOnKeyPress}
+        />
       </ChatbotContainer>
     );
   }

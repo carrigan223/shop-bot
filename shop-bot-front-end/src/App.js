@@ -16,8 +16,6 @@ const Container = styled.div`
   /* overflow: auto; */
 `;
 
-const ContainerTwo = styled.div``;
-
 const App = () => (
   <BrowserRouter>
     <Container>

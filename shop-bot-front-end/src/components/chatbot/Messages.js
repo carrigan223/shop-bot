@@ -41,7 +41,7 @@ const Messages = (props) => {
   return (
     <Grid>
       {props.speaks === "bot" && <BotSpeech>{props.text}</BotSpeech>}
-      {props.speaks === "me" && <UserSpeech>{props.text}</UserSpeech>}
+      {props.speaks === "user" && <UserSpeech>{props.text}</UserSpeech>}
     </Grid>
   );
 };
