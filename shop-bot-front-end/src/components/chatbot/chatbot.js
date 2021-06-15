@@ -10,6 +10,7 @@ import {
 
 class Chatbot extends Component {
   messagesEnd;
+  talkInput;
   constructor(props) {
     super(props);
 
@@ -59,6 +60,7 @@ class Chatbot extends Component {
 
   componentDidUpdate() {
     this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+    this.talkInput.focus();
   }
 
   renderMessages(returnedMessages) {
@@ -103,6 +105,9 @@ class Chatbot extends Component {
           />
         </ChatbotInterface>
         <TextInput
+          ref={(input) => {
+            this.talkInput = input;
+          }}
           type="text"
           placeholder="Say something..."
           onKeyPress={this._handleOnKeyPress}
