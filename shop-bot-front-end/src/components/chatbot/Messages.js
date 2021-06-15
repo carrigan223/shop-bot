@@ -37,18 +37,11 @@ const UserSpeech = styled.div`
 `;
 
 const Messages = (props) => {
+  console.log(props);
   return (
     <Grid>
-      {props.speaks === "bot" && <BotSpeech>{props.speaks}</BotSpeech>}
-      <UserSpeech>Andrew</UserSpeech>
-      <BotSpeech>Andrew</BotSpeech>
-      <UserSpeech>Andrew</UserSpeech>
-      <BotSpeech>Andrew</BotSpeech>
-      <UserSpeech>Andrew</UserSpeech>
-      <BotSpeech>Andrew</BotSpeech>
-      <UserSpeech>Andrew</UserSpeech>
-      <BotSpeech>Andrew</BotSpeech>
-      <UserSpeech>Andrew</UserSpeech>
+      {props.speaks === "bot" && <BotSpeech>{props.text}</BotSpeech>}
+      {props.speaks === "me" && <UserSpeech>{props.text}</UserSpeech>}
     </Grid>
   );
 };
