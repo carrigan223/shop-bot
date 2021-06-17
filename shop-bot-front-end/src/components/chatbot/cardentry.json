@@ -1,0 +1,45 @@
+{
+    "cards": [
+        {
+            "header": "GMO OG (Eighth)",
+            "image": "https://tymber-blaze-products.imgix.net/42475168-2356-4850-8563-663d772815ed.jpg?auto=format&ixlib=react-9.0.2&h=300&q=75&dpr=1",
+            "description": "Bred by Greenpoint Seeds, GMO Kush is a cross of GMO and Topanga Canyon OG. Both parents are known for their potent, flavorful buds that are as beautiful as they are powerful. Perfect for concentrates, GMO Kush puts out loads of resin that pumps out chemy and gassy terps alongside a smooth, creamy flavor from GSC.",
+            "link": "https://buzzdelivery.org/menu/products/pina-29161/flowers/gmo-og-eighth-next-day-81915",
+            "price": "$39.95"
+        },
+        {
+            "header": "Durbanade (Eighth)",
+            "image": "https://tymber-blaze-products.imgix.net/4abe0b60-2804-4d2f-b843-4f1416eda5ab.jpg?auto=format&ixlib=react-9.0.2&h=300&q=75&dpr=1",
+            "description": "Durbanade is a cross between Pineapple Sage and Durban Poison. Durbanade is a high powered sativa that has a strong sour lemon taste and scent. Durbanade is usually THC rich and its prominent terpenes are Terpinolene, Pinene, and Myrcene.",
+            "link": "https://buzzdelivery.org/menu/products/pina-29161/flowers/durbanade-eighth-next-day-81914",
+            "price": "$31.95"
+        },
+        {
+            "header": "Limequat (Eighth)",
+            "image": "https://tymber-blaze-products.imgix.net/641b99b1-376f-4b16-8e37-9dea979a27cd.jpg?auto=format&ixlib=react-9.0.2&h=300&q=75&dpr=1",
+            "description": "From the company: At kamatree we believe in doing our part to help heal the planet. That's why all of our products are grown naturally under the sun with a minimal carbon footprint. So when you choose kamatree you are making a smart environmental choice! ​Join the growing community of people who care about creating a healthier planet. ​ Smoke tree save the world.",
+            "link": "https://buzzdelivery.org/menu/products/kamatree-29186/flowers/limequat-eighth-81854",
+            "price": "$27.95"
+        },
+        {
+            "header": "Lemon OG (Eighth)",
+            "image": "https://tymber-blaze-products.imgix.net/42475168-2356-4850-8563-663d772815ed.jpg?auto=format&ixlib=react-9.0.2&h=300&q=75&dpr=1",
+            "description": "Las Vegas Lemon Skunk x The OG #18. From the company: At kamatree we believe in doing our part to help heal the planet. That's why all of our products are grown naturally under the sun with a minimal carbon footprint. So when you choose kamatree you are making a smart environmental choice! ​Join the growing community of people who care about creating a healthier planet. ​ Smoke tree save the world.",
+            "link": "https://buzzdelivery.org/menu/products/kamatree-29186/flowers/lemon-og-eighth--81853",
+            "price": "$27.95"
+        },
+        {
+            "header": "Blue - Bearded Zen (Eighth)",
+            "image": "https://tymber-blaze-products.imgix.net/42475168-2356-4850-8563-663d772815ed.jpg?auto=format&ixlib=react-9.0.2&h=300&q=75&dpr=1",
+            "description": "Accessible, affordable, and abundant, Old Pal’s vision is simple: It’s just weed, man. Neighbor grown and meant to be shared, our cannabis is all natural, sun-kissed, and rain-watered. A true stoner’s delight, this 1/8th ounce bag is filled with high-quality, sungrown hybrid flower. Portable and shareable, this little bag has the best of both worlds - and it’s perfect for passing the good vibes. Old Pal's hybrid Bearded Zen will help elevate the mind while mellowing out your mood, giving you a balanced state of being anytime, anywhere.",
+            "link": "https://tymber-blaze-products.imgix.net/b9b506f7-a781-4b47-8e5e-bd175e150c91.jpg?auto=format&ixlib=react-9.0.2&h=300&q=75&dpr=1",
+            "price": "$24.95"
+        }
+        
+    ]
+}
+
+
+{
+    "text": "Would you like to see other products"
+}

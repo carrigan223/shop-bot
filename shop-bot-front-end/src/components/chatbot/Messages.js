@@ -13,24 +13,26 @@ const Grid = styled.div`
 const BotSpeech = styled.div`
   flex: 1;
   border: 2px solid lightgreen;
-  border-radius: 15px 50px 30px 5px;
+  border-radius: 15px 30px 30px 0px;
+  background-color: white;
   margin-left: 3%;
   margin-top: 10px;
   margin-bottom: 10px;
-  padding: 20px;
+  padding: 10px;
   width: 70%;
   height: 15px;
-  box-shadow: 12px 2px 20px lightgreen;
+  box-shadow: 2px 2px 20px lightgreen;
 `;
 const UserSpeech = styled.div`
   flex: 1;
   border: 2px solid black;
   margin-left: auto;
   margin-top: 10px;
+  background-color: white;
   margin-bottom: 10px;
   margin-right: 3%;
-  border-radius: 50px 15px 5px 30px;
-  padding: 20px;
+  border-radius: 30px 15px 0px 30px;
+  padding: 10px;
   width: 70%;
   height: 15px;
   box-shadow: -12px 2px 20px grey;

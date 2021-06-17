@@ -2,19 +2,19 @@ import styled from "styled-components";
 
 const ChatbotContainer = styled.div`
   @media (min-width: 768px) {
-    border: 0.5px solid lightgrey;
+    border: 2px solid lightgreen;
     border-radius: 10px;
     margin: 50px 20px 25px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    box-shadow: 2px 2px 25px grey;
-    width: 50vw;
+    box-shadow: 2px 2px 25px black;
+    width: 30vw;
     margin-left: auto;
-    /* overflow: scroll; */
     background-color: white;
-    padding: 10px;
+    padding: 5px;
+    background-color: black;
   }
 
   @media (max-width: 768px) {
@@ -28,24 +28,48 @@ const ChatbotContainer = styled.div`
 
 const ChatbotInterface = styled.div`
   width: 100%;
-  height: 40vh;
+  height: 50vh;
   overflow: scroll;
+  background: rgb(65, 62, 62);
+  border-radius: 30px;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const ChatbotHeader = styled.h2`
   font-family: "Lobster";
   font-size: 2rem;
   text-align: center;
+  color: lightgreen;
   width: 100%;
 `;
 
 const TextInput = styled.input`
-  border-radius: 15px 50px 30px;
+  border-radius: 30px;
   border: 2px solid black;
-  padding: 20px;
+  padding: 10px;
+  margin: 10px 0px;
   width: 75%;
   height: 15px;
-  font-size: 1.25rem;
+  font-size: 1rem;
 `;
 
-export { TextInput, ChatbotHeader, ChatbotInterface, ChatbotContainer };
+const CardRow = styled.div`
+  display: flex;
+  overflow: scroll;
+  margin-bottom: 10px;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export {
+  TextInput,
+  ChatbotHeader,
+  ChatbotInterface,
+  ChatbotContainer,
+  CardRow,
+};

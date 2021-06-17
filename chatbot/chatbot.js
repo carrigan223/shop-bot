@@ -13,16 +13,16 @@ const credentials = {
 };
 
 const sessionClient = new dialogflow.SessionsClient({ projectId, credentials });
-const sessionPath = sessionClient.sessionPath(
-  nonGoogleConfig.googleProjectID,
-  nonGoogleConfig.dialogFlowSessionID
-);
 //handling the dialogflow implementation
 module.exports = {
-  textQuery: async function (text, parameters = {}) {
+  textQuery: async function (text, userID, parameters = {}) {
     //bringing in the handleAction() method to be called before initialization
     //'self' is the module we are working in
     let self = module.exports;
+    let sessionPath = sessionClient.sessionPath(
+      nonGoogleConfig.googleProjectID,
+      nonGoogleConfig.dialogFlowSessionID + userID.userID
+    );
 
     const request = {
       session: sessionPath,
@@ -40,13 +40,18 @@ module.exports = {
     };
     let responses = await sessionClient.detectIntent(request);
     responses = await self.handleAction(responses);
+    console.log(sessionPath);
     return responses;
   },
 
-  eventQuery: async function (event, parameters = {}) {
+  eventQuery: async function (event, userID, parameters = {}) {
     //bringing in the handleAction() method to be called before initialization
     //'self' is the module we are working in
     let self = module.exports;
+    let sessionPath = sessionClient.sessionPath(
+      nonGoogleConfig.googleProjectID,
+      nonGoogleConfig.dialogFlowSessionID + userID.userID
+    );
 
     const request = {
       session: sessionPath,
