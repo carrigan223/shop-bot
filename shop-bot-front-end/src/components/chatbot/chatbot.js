@@ -59,10 +59,15 @@ class Chatbot extends Component {
       console.log(res);
       says = {
         speaks: "bot",
-        msg: msg,
+        msg,
       };
       console.log(says);
-      this.setState({ messages: [...this.state.messages, says] });
+      setTimeout(
+        //not permanent just experimenting with delays
+        () => this.setState({ messages: [...this.state.messages, says] }),
+        10000
+      );
+      // this.setState({ messages: [...this.state.messages, says] });
     }
   }
 
@@ -77,7 +82,7 @@ class Chatbot extends Component {
     for (let msg of res.data.fulfillmentMessages) {
       let says = {
         speaks: "bot",
-        msg: msg,
+        msg,
       };
       this.setState({ messages: [...this.state.messages, says] });
     }
@@ -130,16 +135,14 @@ class Chatbot extends Component {
   _handleOnKeyPress(e) {
     if (e.key === "Enter") {
       this.df_text_query(e.target.value);
+
       e.target.value = "";
     }
   }
 
   render() {
-    console.log(
-      this.state.messages.length > 0
-        ? this.state.messages[0].msg.text.text
-        : null
-    );
+    console.log("this is user input", this.state.userInput);
+
     return (
       <ChatbotContainer>
         <ChatbotHeader>Mr. Nice Guy</ChatbotHeader>

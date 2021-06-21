@@ -4,7 +4,7 @@ const ChatbotContainer = styled.div`
   @media (min-width: 768px) {
     border: 2px solid lightgreen;
     border-radius: 10px;
-    margin: 50px 20px 25px;
+    margin: 50px 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -13,7 +13,7 @@ const ChatbotContainer = styled.div`
     width: 30vw;
     margin-left: auto;
     background-color: white;
-    padding: 5px;
+    padding: 0px 5px 5px 5px;
     background-color: black;
   }
 
@@ -32,6 +32,7 @@ const ChatbotInterface = styled.div`
   overflow: scroll;
   background: rgb(65, 62, 62);
   border-radius: 30px;
+  border: 2px solid white;
 
   ::-webkit-scrollbar {
     display: none;
@@ -41,9 +42,13 @@ const ChatbotInterface = styled.div`
 const ChatbotHeader = styled.h2`
   font-family: "Lobster";
   font-size: 2rem;
-  text-align: center;
   color: lightgreen;
-  width: 100%;
+  border: 2px solid white;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  background-color: darkgreen;
+  border-radius: 30px;
 `;
 
 const TextInput = styled.input`
