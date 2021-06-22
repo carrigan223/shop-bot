@@ -1,37 +1,38 @@
-{
-    "responseId": "a31046f0-f4fa-4040-aa5e-2328935dc5ca-44238540",
-    "queryResult": {
-      "queryText": "where is snoopy",
-      "parameters": {},
-      "allRequiredParamsPresent": true,
-      "fulfillmentText": "Snoopy is nowhere to be found",
-      "fulfillmentMessages": [
-        {
-          "text": {
-            "text": [
-              "Snoopy is nowhere to be found"
-            ]
-          }
-        },
-        {
-          "text": {
-            "text": [
-              "Can you help me fin Snoopy"
-            ]
-          }
-        }
-      ],
-      "intent": {
-        "name": "projects/shop-agent-rjbp/agent/intents/3480b2fb-9e2e-4543-906a-a8ae33c48a34",
-        "displayName": "snoopy"
-      },
-      "intentDetectionConfidence": 1,
-      "languageCode": "en",
-      "sentimentAnalysisResult": {
-        "queryTextSentiment": {
-          "score": -0.2,
-          "magnitude": 0.2
-        }
-      }
-    }
-  }
+// {
+//     "responseId": "a31046f0-f4fa-4040-aa5e-2328935dc5ca-44238540",
+//     "queryResult": {
+//       "queryText": "where is snoopy",
+//       "parameters": {},
+//       "allRequiredParamsPresent": true,
+//       "fulfillmentText": "Snoopy is nowhere to be found",
+//       "fulfillmentMessages": [
+//         {
+//           "text": {
+//             "text": [
+//               "Snoopy is nowhere to be found"
+//             ]
+//           }
+//         },
+//         {
+//           "text": {
+//             "text": [
+//               "Can you help me fin Snoopy"
+//             ]
+//           }
+//         }
+//       ],
+//       "intent": {
+//         "name": "projects/shop-agent-rjbp/agent/intents/3480b2fb-9e2e-4543-906a-a8ae33c48a34",
+//         "displayName": "snoopy"
+//       },
+//       "intentDetectionConfidence": 1,
+//       "languageCode": "en",
+//       "sentimentAnalysisResult": {
+//         "queryTextSentiment": {
+//           "score": -0.2,
+//           "magnitude": 0.2
+//         }
+//       }
+//     }
+//   }
+  

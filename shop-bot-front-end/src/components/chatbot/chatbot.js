@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios/index";
 import Message from "./Messages";
 import Card from "./Cards/card";
+import QuickReplies from "./quickReplies/quickReplies";
 import {
   TextInput,
   ChatbotHeader,
@@ -22,6 +23,7 @@ class Chatbot extends Component {
     super(props);
 
     this._handleOnKeyPress = this._handleOnKeyPress.bind(this);
+    this._handleQuickReplyPayload = this._handleQuickReplyPayload.bind(this);
     this.state = {
       //array of messages to be displayed
       messages: [],
@@ -57,15 +59,16 @@ class Chatbot extends Component {
     }
     for (let msg of res.data.fulfillmentMessages) {
       console.log(res);
-      says = {
+      const botSays = {
         speaks: "bot",
         msg,
       };
       console.log(says);
       setTimeout(
         //not permanent just experimenting with delays
-        () => this.setState({ messages: [...this.state.messages, says] }),
-        10000
+
+        () => this.setState({ messages: [...this.state.messages, botSays] }),
+        1000
       );
       // this.setState({ messages: [...this.state.messages, says] });
     }
@@ -99,6 +102,13 @@ class Chatbot extends Component {
     this.talkInput.focus();
   }
 
+  _handleQuickReplyPayload(event, payload, text) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.df_text_query(text);
+  }
+
   renderCards(cards) {
     return cards.map((card, i) => <Card key={i} payload={card.structValue} />);
   }
@@ -118,6 +128,25 @@ class Chatbot extends Component {
         <CardRow key={i}>
           {this.renderCards(message.msg.payload.fields.cards.listValue.values)}
         </CardRow>
+      );
+    } else if (
+      message.msg &&
+      message.msg.payload &&
+      message.msg.payload.fields &&
+      message.msg.payload.fields.quick_replies
+    ) {
+      return (
+        <QuickReplies
+          text={
+            message.msg.payload.fields.tet
+              ? message.msg.payload.fields.text
+              : null
+          }
+          key={i}
+          replyClick={this._handleQuickReplyPayload}
+          speaks={message.speaks}
+          payload={message.msg.payload.fields.quick_replies.listValue.values}
+        />
       );
     }
   }
@@ -141,8 +170,6 @@ class Chatbot extends Component {
   }
 
   render() {
-    console.log("this is user input", this.state.userInput);
-
     return (
       <ChatbotContainer>
         <ChatbotHeader>Mr. Nice Guy</ChatbotHeader>
