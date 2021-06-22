@@ -8,7 +8,10 @@ import {
   ChatbotHeader,
   ChatbotInterface,
   ChatbotContainer,
+  ShowButton,
   CardRow,
+  ShowButtonContainer,
+  ShowChatContainer
 } from "./ChatbotStyles";
 import Cookies from "universal-cookie";
 import { v4 as uuid } from "uuid";
@@ -24,9 +27,12 @@ class Chatbot extends Component {
 
     this._handleOnKeyPress = this._handleOnKeyPress.bind(this);
     this._handleQuickReplyPayload = this._handleQuickReplyPayload.bind(this);
+    this.show = this.show.bind(this);
+    this.hide = this.hide.bind(this);
     this.state = {
       //array of messages to be displayed
       messages: [],
+      showBot: false,
     };
 
     //checking if cookie exist then if not
@@ -98,15 +104,32 @@ class Chatbot extends Component {
 
   //setting the scroll to newest method
   componentDidUpdate() {
-    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
-    this.talkInput.focus();
+    if (this.state.showBot) {
+      this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+      this.talkInput.focus();
+    }
+  }
+
+  show() {
+    this.setState({ showBot: true });
+  }
+
+  hide() {
+    this.setState({ showBot: false });
   }
 
   _handleQuickReplyPayload(event, payload, text) {
     event.preventDefault();
     event.stopPropagation();
 
-    this.df_text_query(text);
+    switch (payload) {
+      case "delivery_yes":
+        this.df_event_query("DELIVERY");
+        break;
+      default:
+        this.df_text_query(text);
+        break;
+    }
   }
 
   renderCards(cards) {
@@ -170,28 +193,39 @@ class Chatbot extends Component {
   }
 
   render() {
-    return (
-      <ChatbotContainer>
-        <ChatbotHeader>Mr. Nice Guy</ChatbotHeader>
-        <ChatbotInterface>
-          {this.renderMessages(this.state.messages)}
-          <div
-            ref={(el) => {
-              this.messagesEnd = el;
-            }}
-            style={{ float: "left", cleat: "both" }}
-          />
-        </ChatbotInterface>
-        <TextInput
-          ref={(input) => {
-            this.talkInput = input;
-          }}
-          type="text"
-          placeholder="Say something..."
-          onKeyPress={this._handleOnKeyPress}
-        />
-      </ChatbotContainer>
-    );
+    if (this.state.showBot) {
+      return (
+        <ShowChatContainer>
+          <ChatbotContainer>
+            <ChatbotHeader>Mr. Nice Guy</ChatbotHeader>
+            <button onClick={this.hide}>Close</button>
+            <ChatbotInterface>
+              {this.renderMessages(this.state.messages)}
+              <div
+                ref={(el) => {
+                  this.messagesEnd = el;
+                }}
+                style={{ float: "left", cleat: "both" }}
+              />
+            </ChatbotInterface>
+            <TextInput
+              ref={(input) => {
+                this.talkInput = input;
+              }}
+              type="text"
+              placeholder="Say something..."
+              onKeyPress={this._handleOnKeyPress}
+            />
+          </ChatbotContainer>
+        </ShowChatContainer>
+      );
+    } else {
+      return (
+        <ShowButtonContainer>
+          <ShowButton onClick={this.show}>Show</ShowButton>
+        </ShowButtonContainer>
+      );
+    }
   }
 }
 

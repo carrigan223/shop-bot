@@ -4,9 +4,12 @@ import styled from "styled-components";
 
 const QuickReplyContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin: 20px 10px;
   padding: 10px 0px;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
 `;
 
 class QuickReplies extends Component {

@@ -26,6 +26,37 @@ const ChatbotContainer = styled.div`
   }
 `;
 
+const ShowChatContainer = styled.div`
+  height: 100vh;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+`;
+
+const ShowButton = styled.button`
+  position: fixed;
+  left: 90%;
+  bottom: 20px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  border: 2px solid black;
+  padding: 1rem;
+  border-radius: 100%;
+  height: 10vh;
+  width: 10vh;
+  background-color: black;
+  color: lightgreen;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lobster";
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 const ChatbotInterface = styled.div`
   width: 100%;
   height: 50vh;
@@ -71,10 +102,21 @@ const CardRow = styled.div`
   }
 `;
 
+const ShowButtonContainer = styled.div`
+  height: 80px;
+  position: fixed;
+  bottom: 0;
+  left: 90px;
+  right: 0;
+`;
+
 export {
   TextInput,
   ChatbotHeader,
   ChatbotInterface,
   ChatbotContainer,
   CardRow,
+  ShowButton,
+  ShowButtonContainer,
+  ShowChatContainer,
 };

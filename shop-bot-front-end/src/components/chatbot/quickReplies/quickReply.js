@@ -13,6 +13,7 @@ const ReplyContainer = styled.div`
   border-radius: 33px;
   border: 2px solid lightgreen;
   box-shadow: 2px 2px 20px lightgreen;
+  margin: 10px 0px;
 
   :hover {
     cursor: pointer;
