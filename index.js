@@ -4,6 +4,8 @@ const express = require("express");
 //initialize the app
 const app = express();
 
+const  mongoose = require('mongoose')
+
 //using express native package to parse JSON
 app.use(express.json());
 

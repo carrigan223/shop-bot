@@ -2,23 +2,26 @@ import styled from "styled-components";
 
 const ChatbotContainer = styled.div`
   @media (min-width: 768px) {
-    border: 2px solid lightgreen;
+    border: 2px solid black;
     border-radius: 10px;
-    margin: 50px 20px;
+    /* margin: 50px 20px; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     box-shadow: 2px 2px 25px black;
     width: 30vw;
+    height: 70vh;
     margin-left: auto;
     background-color: white;
     padding: 0px 5px 5px 5px;
-    background-color: black;
+    /* background-color: black; */
+    background: rgba(123, 239, 178, 0.3);
   }
 
   @media (max-width: 768px) {
     margin: 20px;
+
     text-align: center;
     width: 90vw;
     border: 0.5px solid lightgrey;
@@ -27,10 +30,23 @@ const ChatbotContainer = styled.div`
 `;
 
 const ShowChatContainer = styled.div`
-  height: 100vh;
+  height: 80vh;
   position: fixed;
-  bottom: 0;
-  right: 0;
+  bottom: 50px;
+  right: 20px;
+`;
+
+const CloseButton = styled.button`
+  margin-left: auto;
+  color: lightgreen;
+  background: none;
+  border: none;
+  padding: 10px;
+  font-size: 1.5rem;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const ShowButton = styled.button`
@@ -59,11 +75,13 @@ const ShowButton = styled.button`
 
 const ChatbotInterface = styled.div`
   width: 100%;
-  height: 50vh;
+  height: 80%;
   overflow: scroll;
-  background: rgb(65, 62, 62);
+  /* background: rgba(65, 62, 62, .9); */
+  background: rgba(170, 250, 170, .4);
+
   border-radius: 30px;
-  border: 2px solid white;
+  border: 2px solid black;
 
   ::-webkit-scrollbar {
     display: none;
@@ -77,8 +95,9 @@ const ChatbotHeader = styled.h2`
   border: 2px solid white;
   margin-left: auto;
   margin-right: auto;
+  margin-top: -20px;
   padding: 10px;
-  background-color: darkgreen;
+  background-color: black;
   border-radius: 30px;
 `;
 
@@ -119,4 +138,5 @@ export {
   ShowButton,
   ShowButtonContainer,
   ShowChatContainer,
+  CloseButton,
 };

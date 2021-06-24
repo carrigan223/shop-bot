@@ -11,7 +11,8 @@ import {
   ShowButton,
   CardRow,
   ShowButtonContainer,
-  ShowChatContainer
+  ShowChatContainer,
+  CloseButton,
 } from "./ChatbotStyles";
 import Cookies from "universal-cookie";
 import { v4 as uuid } from "uuid";
@@ -45,6 +46,11 @@ class Chatbot extends Component {
     console.log(cookies.get("userID"));
   }
 
+  //this async method is calling dialogflow using axios
+  //we are taking the user input query and sending to
+  //to the server which will handle dialogflow communications
+  //upon receiving our response the messages are then caught in state
+  //`messages` which are then mapped over and redered
   async df_text_query(queryText) {
     let says = {
       speaks: "user",
@@ -64,22 +70,19 @@ class Chatbot extends Component {
       console.log(res.data.parameters.fields["number-sequence"].stringValue);
     }
     for (let msg of res.data.fulfillmentMessages) {
-      console.log(res);
       const botSays = {
         speaks: "bot",
         msg,
       };
-      console.log(says);
-      setTimeout(
-        //not permanent just experimenting with delays
-
-        () => this.setState({ messages: [...this.state.messages, botSays] }),
-        1000
-      );
-      // this.setState({ messages: [...this.state.messages, says] });
+      //this promise resolution is causing a 2sec delay befor setting the
+      //new messages to state
+      await this.setDelay(2);
+      this.setState({ messages: [...this.state.messages, botSays] });
     }
   }
 
+  //some theory for the above method but this method
+  //will be handling our event queries as opposed to text
   async df_event_query(eventName) {
     const userID = { userID: cookies.get("userID") };
 
@@ -102,7 +105,18 @@ class Chatbot extends Component {
     this.df_event_query("welcome");
   }
 
-  //setting the scroll to newest method
+  //setDelay is a fuction to give chatbot delay
+  //the parameter passed to it will then delay
+  //the response by `x` number of seconds
+  setDelay(x) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(x);
+      }, x * 1000);
+    });
+  }
+
+  //setting the scroll to newest message
   componentDidUpdate() {
     if (this.state.showBot) {
       this.messagesEnd.scrollIntoView({ behavior: "smooth" });
@@ -110,19 +124,27 @@ class Chatbot extends Component {
     }
   }
 
+  //method for showing the chat bot on click
   show() {
     this.setState({ showBot: true });
   }
 
+  //method for hiding the chatbot on click
   hide() {
     this.setState({ showBot: false });
   }
 
+  //this method takes care of our quickreply payloads
+  //using a switch statement to account for various
+  //quick reply situations
   _handleQuickReplyPayload(event, payload, text) {
     event.preventDefault();
     event.stopPropagation();
 
     switch (payload) {
+      case "recomend_yes":
+        this.df_event_query("SHOW_RECOMENDED");
+        break;
       case "delivery_yes":
         this.df_event_query("DELIVERY");
         break;
@@ -132,10 +154,14 @@ class Chatbot extends Component {
     }
   }
 
+  //this render is taking care of the product cards
   renderCards(cards) {
     return cards.map((card, i) => <Card key={i} payload={card.structValue} />);
   }
 
+  //renderOne message is taking in the message then determining if
+  //it is text, event, or quick reply and returning a component
+  //based on the case
   renderOneMessage(message, i) {
     if (message.msg && message.msg.text && message.msg.text.text) {
       return (
@@ -174,6 +200,7 @@ class Chatbot extends Component {
     }
   }
 
+  //maping over our messages to format and render correctly
   renderMessages(returnedMessages) {
     if (returnedMessages) {
       return returnedMessages.map((message, i) => {
@@ -184,6 +211,7 @@ class Chatbot extends Component {
     }
   }
 
+  //taking care of sending the query with the enter key
   _handleOnKeyPress(e) {
     if (e.key === "Enter") {
       this.df_text_query(e.target.value);
@@ -197,8 +225,8 @@ class Chatbot extends Component {
       return (
         <ShowChatContainer>
           <ChatbotContainer>
+            <CloseButton onClick={this.hide}>X</CloseButton>
             <ChatbotHeader>Mr. Nice Guy</ChatbotHeader>
-            <button onClick={this.hide}>Close</button>
             <ChatbotInterface>
               {this.renderMessages(this.state.messages)}
               <div
